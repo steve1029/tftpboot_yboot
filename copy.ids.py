@@ -11,11 +11,11 @@ nodename = 'y%03d'
 #	homes.append(homename % number)
 #	nodes.append(homename % number)
 
-for number in range(101,121):
-	nodes.append(nodename % number)
-
-#for number in range(201,230):
+#for number in range(101,121):
 #	nodes.append(nodename % number)
+
+for number in range(201,205):
+	nodes.append(nodename % number)
 
 def ext_exec_wait(cmd):
 	out, err = sp.Popen(cmd.split(), stdout=sp.PIPE, stderr=sp.PIPE).communicate()
@@ -24,7 +24,8 @@ def ext_exec_wait(cmd):
 
 rpath = '/nfsroot/%s'
 
-cmd = sys.argv[1:]
+#cmd = sys.argv[1:]
+"""
 for node in nodes:
 	print(node)
 	rpathn = rpath % node
@@ -39,3 +40,10 @@ for home in homes:
 	os.system('sshpass -p "0000" scp -r /etc/passwd %s:/etc/' % home)
 	os.system('sshpass -p "0000" scp -r /etc/shadow %s:/etc/' % home)
 	os.system('sshpass -p "0000" scp -r /etc/gshadow %s:/etc/' % home)
+"""
+for node in nodes:
+	print (node)
+	os.system('sshpass -p "0000" scp -r /etc/group %s:/etc/' % node)
+	os.system('sshpass -p "0000" scp -r /etc/passwd %s:/etc/' % node)
+	os.system('sshpass -p "0000" scp -r /etc/shadow %s:/etc/' % node)
+	os.system('sshpass -p "0000" scp -r /etc/gshadow %s:/etc/' % node)
