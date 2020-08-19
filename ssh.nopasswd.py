@@ -32,9 +32,10 @@ nodename = 'y%03d'
 #for number in xrange(101,200):
 #	nodes.append(nodename % number)
 
-for number in range(101,121):
+for number in range(201,203):
     nodes.append(nodename % number)
 
+nodes.append("yboot")
 #nodes.append("cpunode")
 #nodes.append("gpunode")
 #nodes.append("gpunode.no.ana")
@@ -49,10 +50,9 @@ def ext_exec_wait(cmd):
     return out
 
 passwd = sys.argv[1]
+users = sys.argv[2]
 
-users = ['lsy','intro15']
-
-for user in users:
-    command = 'sshpass -p "{0}" ssh-copy-id {1}@y101'.format(passwd,user)
+for node in nodes:
+    command = 'sshpass -p "{0}" ssh-copy-id {1}@{2}'.format(passwd,user,node)
     print(command)
     ext_exec_wait(command)

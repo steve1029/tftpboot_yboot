@@ -25,6 +25,9 @@ def ext_exec_wait(cmd):
 rpath = '/nfsroot/%s'
 
 #cmd = sys.argv[1:]
+
+passwd = 'dusrntlf*2nol'
+
 """
 for node in nodes:
 	print(node)
@@ -43,7 +46,7 @@ for home in homes:
 """
 for node in nodes:
 	print (node)
-	os.system('sshpass -p "0000" scp -r /etc/group %s:/etc/' % node)
-	os.system('sshpass -p "0000" scp -r /etc/passwd %s:/etc/' % node)
-	os.system('sshpass -p "0000" scp -r /etc/shadow %s:/etc/' % node)
-	os.system('sshpass -p "0000" scp -r /etc/gshadow %s:/etc/' % node)
+	os.system('sshpass -p "{0}" scp -r /etc/group {1}:/etc/' .format(passwd, node))
+	os.system('sshpass -p "{0}" scp -r /etc/passwd {1}:/etc/' .format(passwd, node))
+	os.system('sshpass -p "{0}" scp -r /etc/shadow {1}:/etc/' .format(passwd, node))
+	os.system('sshpass -p "{0}" scp -r /etc/gshadow {1}:/etc/' .format(passwd, node))
