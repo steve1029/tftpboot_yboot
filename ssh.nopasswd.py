@@ -33,7 +33,7 @@ nodename = 'y%03d'
 #	nodes.append(nodename % number)
 
 for number in range(101,121):
-	nodes.append(nodename % number)
+    nodes.append(nodename % number)
 
 #nodes.append("cpunode")
 #nodes.append("gpunode")
@@ -44,15 +44,15 @@ for number in range(101,121):
 #nodes.append("gpunode.ana.cuda.ompi-dev.mpi4py")
 
 def ext_exec_wait(cmd):
-	out, err = sp.Popen(cmd.split(), stdout=sp.PIPE, stderr=sp.PIPE).communicate()
-	if err != '': print(err)
-	return out
+    out, err = sp.Popen(cmd.split(), stdout=sp.PIPE, stderr=sp.PIPE).communicate()
+    if err != '': print(err)
+    return out
 
 passwd = sys.argv[1]
 
 users = ['lsy','intro15']
 
 for user in users:
-	command = 'sshpass -p "{0}" ssh-copy-id {1}@y101'.format(passwd,user)
-	print(command)
-	ext_exec_wait(command)
+    command = 'sshpass -p "{0}" ssh-copy-id {1}@y101'.format(passwd,user)
+    print(command)
+    ext_exec_wait(command)
